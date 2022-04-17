@@ -22,6 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/search',[
     CastController::class,'getCastsList'
 ]);
-Route::get('/search/{castId}',[
+Route::get('/search/{id}',[
     CastController::class,'getCastProfile'
 ]);

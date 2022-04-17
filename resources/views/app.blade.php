@@ -29,3 +29,9 @@
 </body>
 
 </html>
+
+<style>
+  body{
+    overflow: auto;
+  }
+</style>

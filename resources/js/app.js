@@ -1,6 +1,14 @@
 
 import Vue from "vue";
 import VueRouter from 'vue-router';
+// Webpack CSS import
+import 'onsenui/css/onsenui.css';
+import 'onsenui/css/onsen-css-components.css';
+// JS import
+import VueOnsen from 'vue-onsenui'; // This imports 'onsenui', so no need to import it separately
+
+Vue.use(VueOnsen); // VueOnsen set here as plugin to VUE. Done automatically if a call to window.Vue exists in the startup code.
+
 import HeaderComponent from "./components/HeaderComponent";
 import SearchComponent from "./components/SearchComponent";
 import CastProfileComponent from "./components/CastProfileComponent.vue";
@@ -25,7 +33,8 @@ const router = new VueRouter({
         {
             path: '/search',
             name: 'user.search',
-            component: SearchComponent
+            component: SearchComponent,
+            props:true
         },
 
         {

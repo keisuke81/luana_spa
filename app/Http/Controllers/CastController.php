@@ -12,4 +12,10 @@ class CastController extends Controller
 
         return $items;
     }
+
+    public function getCastProfile(Cast $id)
+    {
+        $cast = Cast::find($id)->last();
+        return $cast;
+    }
 }

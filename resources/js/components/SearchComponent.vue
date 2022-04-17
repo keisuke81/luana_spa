@@ -1,17 +1,38 @@
 <template>
   <div class="card-deck">
-    <div v-for="(item, index) in items" :key="index">
-      <ons-card style="width:30%;">
+    <ons-card class="card" v-for="(item, index) in items" :key="index">
         <img :src="item.img_url" alt="" class="card-img-top">
         <div class="card-body">
-          <p class="card-text">{{item.nickname}}</p>
-          <p class="card-text">{{item.best_score}}</p>
-          <p class="card-text">{{item.length_of_golf}}</p>
+          <p class="name-text">{{item.nickname}}</p>
+          <p class="others-text">ベストスコア：{{item.best_score}}</p>
+          <p class="others-text">ゴルフ歴{{item.length_of_golf}}年</p>
+
+          <router-link v-bind:to="{name:'user.cast.profile', params: {castId: item.id}}">
+            <ons-button modifier="large">プロフィール</ons-button>
+          </router-link>
         </div>  
-      </ons-card>    
-    </div>
-  </div>  
+    </ons-card>
+  </div>
 </template>
+
+<style scoped>
+ .card-deck{
+   display:flex;
+   justify-content: flex-start;
+   flex-wrap: wrap;
+ }
+
+ .card{
+   display: inline-block;
+   width:30%;
+   margin-right: 5%;
+ }
+
+ .name-text{
+   font-size:1.3em;
+   font-weight: 600;
+ }
+</style>
 
 <script>
 export default {

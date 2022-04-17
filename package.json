@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "onsenui": "^2.11.2",
+        "vue-onsenui": "^2.6.4",
         "vue-router": "^3.5.3"
     }
 }
