@@ -13,10 +13,12 @@ import HeaderComponent from "./components/HeaderComponent";
 import SearchComponent from "./components/SearchComponent";
 import CastProfileComponent from "./components/CastProfileComponent.vue";
 import OfferCastComponent from "./components/OfferCastComponent.vue";
+import OfferConfirmComponent from "./components/OfferConfirmComponent.vue";
 import UserReserveComponent from "./components/UserReserveComponent.vue";
 import UserLikedComponent from "./components/UserLikedComponent";
 import UserChatListComponent from "./components/UserChatListComponent";
 import UserMypageComponent from "./components/UserMypageComponent";
+
 
 
 require('./bootstrap');
@@ -41,13 +43,14 @@ const router = new VueRouter({
             path: '/search/:castId',
             name: 'user.cast.profile',
             component: CastProfileComponent,
-            props:true
+            props: true,
         },
-
+  
         {
-            path: 'offer/:castId',
+            path: '/offer/:castId',
             name: 'user.cast.offer',
-            component:OfferCastComponent
+            component: OfferCastComponent,
+            props:true
         },
 
         {
@@ -76,7 +79,7 @@ const router = new VueRouter({
             name: 'user.mypage',
             component: UserMypageComponent,
             props:true
-        }
+        },
     ]
 });
 
