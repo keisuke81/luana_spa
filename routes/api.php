@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CastController;
+use App\Http\Controllers\OfferController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,6 @@ Route::get('/search',[
 Route::get('/search/{id}',[
     CastController::class,'getCastProfile'
 ]);
+Route::post('/offer/create',[
+    OfferController::class,'createOffer'
+])->name('createOffer');

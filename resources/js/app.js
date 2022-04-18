@@ -18,6 +18,11 @@ import UserReserveComponent from "./components/UserReserveComponent.vue";
 import UserLikedComponent from "./components/UserLikedComponent";
 import UserChatListComponent from "./components/UserChatListComponent";
 import UserMypageComponent from "./components/UserMypageComponent";
+import OfferCreateComponent from "./components/OfferCreateComponent.vue";
+import LoginComponent from "./components/LoginComponent.vue";
+import LinelogincallbackComponent from "./components/LinelogincallbackComponent.vue"
+import HomeComponent from "./components/HomeComponent.vue";
+
 
 
 
@@ -32,6 +37,25 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'history',
     routes: [
+        {
+            path: '/',
+            name: 'home',
+            component:HomeComponent
+        },
+
+        {
+            path: '/login',
+            name: 'user.login',
+            component: LoginComponent,
+            props:true
+        },
+
+        {
+            path: '/linelogincallback',
+            name: 'user.callback',
+            component:LinelogincallbackComponent
+        },
+
         {
             path: '/search',
             name: 'user.search',
@@ -50,6 +74,13 @@ const router = new VueRouter({
             path: '/offer/:castId',
             name: 'user.cast.offer',
             component: OfferCastComponent,
+            props:true
+        },
+
+        {
+            path: '/offer/create',
+            name: 'user.offer.create',
+            component: OfferCreateComponent,
             props:true
         },
 

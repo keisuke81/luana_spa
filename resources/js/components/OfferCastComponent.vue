@@ -1,13 +1,17 @@
 <template>
   <ons-card>
-    <form v-on:submit="onSubmit" action="/offer/done" method="post">
+    <form v-on:submit.prevent="submit" method="post">
       <input type="hidden" name="_token" :value="csrf">
         <table class="table">
+          <input type="text" value="1000012" v-model="offer.cast_id" id="cast_id">
+
+          <input type="text" id="user_id" v-model="offer.user_id" value="1">
+
           <!--日にち-->
           <tr>
             <th>日にち</th>
             <td>
-              <input type="date" name="date" value="2022-01-01">
+              <input type="date" id="date" v-model="offer.date" value="2022-01-01">
             </td>
           </tr>
 
@@ -15,7 +19,7 @@
           <tr>
             <th>スタート時間</th>
             <td>
-              <input type="time" name="start_at" id="start_at" min="6:30" max="20:00" value="08:00">
+              <input type="time" v-model="offer.start_at" id="start_at" min="6:30" max="20:00" value="08:00">
             </td>
           </tr>
           
@@ -23,7 +27,7 @@
           <tr>
             <th>ゴルフ場名</th>
             <td>
-              <input type="text" id="golf_course" name="golf_course" placeholder="例）ABCカントリークラブ" value="">
+              <input type="text" id="golf_course" v-model="offer.golf_course" placeholder="例）ABCカントリークラブ">
             </td>
           </tr>
 
@@ -31,7 +35,7 @@
           <tr>
             <th>男性の人数</th>
             <td>
-              <select name="" id="num_of_users">
+              <select v-model="offer.num_of_users" id="num_of_users">
                 <option value="1">1名</option>
                 <option value="2">2名</option>
               </select>
@@ -42,7 +46,7 @@
           <tr>
             <th>女性の人数</th>
             <td>
-              <select name="" id="num_of_women"  multiple>
+              <select v-model="offer.num_of_women" id="num_of_women">
                 <option value="1">1名</option>
                 <option value="2">2名</option>
                 <option value="3">1名+友達1名</option>
@@ -52,7 +56,7 @@
         </table>
 
         <!--申し込みフォーム-->
-        <button type="submit" class="bigger">確認画面に進む</button>
+        <button type="submit" class="bigger">お誘いする</button>
     </form>
   </ons-card>
 </template>
@@ -65,18 +69,19 @@
 
 <script>
 export default {
-  data() {
-    return {
-      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+
+  data:function(){
+    return {csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      offer:[]
     }   
   },
   methods:{
-    onSubmit: function(e){
-      if(!confirm('この入力内容でお誘いしますか？')){
-        e.preventDefault();
-        return;
-      }
+    submit(){
+      axios.post('/api/offer/create',this.offer)
+       .then((res)=>{
+        this.$router.push({name: 'user.search'});
+        });
+      }   
     }
   }
-}
 </script>
