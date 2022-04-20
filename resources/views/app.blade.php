@@ -7,10 +7,12 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{ config('app.name', 'Vue Laravel SPA') }}</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Styles -->
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
@@ -21,7 +23,8 @@
 
 <body>
   <div id="app">
-    <header-component></header-component>
+    <p class="hidden"></p>
+    <header-component ></header-component>
     <router-view></router-view>
   </div>
   <!-- Scripts -->
@@ -31,7 +34,10 @@
 </html>
 
 <style>
-  body{
+  body {
     overflow: auto;
+  }
+  .hidden{
+    display: none;
   }
 </style>

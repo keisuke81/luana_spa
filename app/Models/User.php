@@ -21,6 +21,20 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'nickname',
+        'living_area',
+        'birthday',
+        'occupation',
+        'img_url',
+        'best_score',
+        'length_of_golf',
+        'possible_date_round',
+        'anyone_together',
+        'transportation',
+        'self_produce',
+        'message',
+        'provider',
+        'line_id'
     ];
 
     /**

@@ -15,8 +15,8 @@ class Offer extends Model
         'golf_course',
         'date',
         'start_at',
-        'num_of_players_men',
-        'num_of_players_women',
+        'num_of_users',
+        'num_of_women',
         'reserved',
     ];
 }

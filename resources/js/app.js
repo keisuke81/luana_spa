@@ -20,7 +20,7 @@ import UserChatListComponent from "./components/UserChatListComponent";
 import UserMypageComponent from "./components/UserMypageComponent";
 import OfferCreateComponent from "./components/OfferCreateComponent.vue";
 import LoginComponent from "./components/LoginComponent.vue";
-import LinelogincallbackComponent from "./components/LinelogincallbackComponent.vue"
+import LinelogincallbackComponent from "./components/LinelogincallbackComponent.vue";
 import HomeComponent from "./components/HomeComponent.vue";
 
 
@@ -38,7 +38,7 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/',
+            path: '/user',
             name: 'home',
             component:HomeComponent
         },
@@ -57,56 +57,56 @@ const router = new VueRouter({
         },
 
         {
-            path: '/search',
+            path: '/user/search',
             name: 'user.search',
             component: SearchComponent,
             props:true
         },
 
         {
-            path: '/search/:castId',
+            path: '/user/search/:castId',
             name: 'user.cast.profile',
             component: CastProfileComponent,
             props: true,
         },
   
         {
-            path: '/offer/:castId',
+            path: '/user/offer/:castId',
             name: 'user.cast.offer',
             component: OfferCastComponent,
             props:true
         },
 
         {
-            path: '/offer/create',
+            path: '/user/offer/create',
             name: 'user.offer.create',
             component: OfferCreateComponent,
             props:true
         },
 
         {
-            path: '/reserve/:reserveId',
+            path: '/user/reserve/:reserveId',
             name: 'user.reserve',
             component: UserReserveComponent,
             props:true
         },
 
         {
-            path: '/liked',
+            path: '/user/liked',
             name: 'user.liked',
             component: UserLikedComponent,
             props:true
         },
 
         {
-            path: '/chat/list',
+            path: '/user/chat/list',
             name: 'user.chat.list',
             component: UserChatListComponent,
             props:true
         },
 
         {
-            path: '/mypage',
+            path: '/user/mypage',
             name: 'user.mypage',
             component: UserMypageComponent,
             props:true
@@ -119,5 +119,3 @@ const app = new Vue({
     el: '#app',
     router
 });
-
-

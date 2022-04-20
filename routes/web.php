@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any}', function(){
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
+
+
+Route::get('/user/{any}', function(){
     return view('app');
-})->where('any','.*');
+})->where('any','.*')->name('user.app');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//LINEログイン機能 男
+Route::get(
+    '/login/line',
+    [LoginController::class, 'redirectToProvider']
+)->name('linelogin');
+
+Route::get('/linelogincallback', [LoginController::class, 'handleProviderCallback'])->name('callback');
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

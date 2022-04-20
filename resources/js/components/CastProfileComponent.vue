@@ -49,7 +49,7 @@ export default {
 
   methods:{
     getCast(){
-      axios.get('/api/search/'+this.castId)
+      axios.get('/api/user/search/'+this.castId)
         .then((res) => {
           this.cast = res.data;
         });

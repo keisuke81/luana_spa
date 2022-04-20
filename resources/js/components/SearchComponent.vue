@@ -43,7 +43,7 @@ export default {
   },
   methods:{
     getSearch(){
-      axios.get('api/search')
+      axios.get('/api/user/search')
         .then((res) => {
           this.items = res.data;
         });

@@ -20,12 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/search',[
+Route::get('/user/search',[
     CastController::class,'getCastsList'
 ]);
-Route::get('/search/{id}',[
+Route::get('/user/search/{id}',[
     CastController::class,'getCastProfile'
 ]);
-Route::post('/offer/create',[
+
+Route::post('/user/offer/create/',[
     OfferController::class,'createOffer'
 ])->name('createOffer');

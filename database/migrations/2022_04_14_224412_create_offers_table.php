@@ -17,11 +17,11 @@ class CreateOffersTable extends Migration
             $table->unsignedBigInteger('id')->autoIncrement();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('cast_id');
-            $table->string('golf_course_name')->nullable();
+            $table->string('golf_course')->nullable();
             $table->date('date');
             $table->time('start_at')->nullable();
-            $table->string('num_of_players_men');
-            $table->string('num_of_players_women');
+            $table->string('num_of_users');
+            $table->string('num_of_women');
             $table->string('reserved')->nullable();
             $table->timestamps();
 
