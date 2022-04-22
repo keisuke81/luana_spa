@@ -49,7 +49,7 @@
           </tr>
         </table>
         <!--申し込みフォーム-->
-        <input v-on:click="onSubmit" type="submit" class="bigger" value="お誘いする">   
+        <input v-on:click="onSubmit" type="submit" class="bigger" value="お誘いする">
   </ons-card>
 </template>
 
@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  props: ['castId'],
+  props: ['castId','user_id'],
 
   data(){
     return{
@@ -77,6 +77,7 @@ export default {
   methods:{
     onSubmit: function(){
       var params = {
+        'user_id':this.user_id,
         'cast_id':this.castId,
         'date':this.date,
         'start_at':this.start_at,
@@ -86,13 +87,8 @@ export default {
       };
 
       axios.post('/api/user/offer/create/', params)
-       .then(res =>{
-         console.log(res.data.cast_id);
-         console.log(res.data.date);
-         console.log(res.data.start_at);
-         console.log(res.data.golf_course);
-         console.log(res.data.num_of_users);
-         console.log(res.data.num_of_women);
+       .then((res) =>{
+         this.$router.push({name: 'user.search'});
         });
       }
     },

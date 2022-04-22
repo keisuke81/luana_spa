@@ -72,7 +72,9 @@ class LoginController extends Controller
         Auth::login($user);
         $user_id = Auth::id();
 
-        return redirect()->route('user.app', auth()->user()->id);
+        return redirect()->route('user.app', [
+            'user_id'=>$user_id
+        ]);
     }
 
     /**

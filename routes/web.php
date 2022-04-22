@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,13 +21,15 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::get('/user/{any}', function(){
-    return view('app');
-})->where('any','.*')->name('user.app');
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get(
+    '/user',[UserController::class, 'index']
+)->name('user.app');
 
 //LINEログイン機能 男
 Route::get(

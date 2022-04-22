@@ -11,7 +11,9 @@ class CastController extends Controller
     public function getCastsList(){
         $items = Cast::get();
 
-        return $items;
+        return [
+            'items' => $items
+        ];
     }
 
     public function getCastProfile(Cast $id)

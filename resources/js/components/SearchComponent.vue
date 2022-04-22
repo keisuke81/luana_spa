@@ -1,5 +1,6 @@
 <template>
   <div class="card-deck">
+    <p class="hidden">{{user_id}}</p>
     <ons-card class="card" v-for="(item, index) in items" :key="index">
         <img :src="item.img_url" alt="" class="card-img-top">
         <div class="card-body">
@@ -38,14 +39,16 @@
 export default {
   data:function(){
     return{
-      items:[]
+      items:[],
+      user_id:''
     }
   },
   methods:{
     getSearch(){
       axios.get('/api/user/search')
         .then((res) => {
-          this.items = res.data;
+          this.items = res.data.items;
+          this.user_id = res.data.user_id;
         });
     }
   },

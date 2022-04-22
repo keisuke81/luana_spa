@@ -23,9 +23,9 @@
 
 <body>
   <div id="app">
-    <p class="hidden"></p>
-    <header-component ></header-component>
-    <router-view></router-view>
+    <p class="hidden">{{$user_id}}</p>
+    <header-component :user_id=@json($user_id)></header-component>
+    <router-view :user_id=@json($user_id)></router-view>
   </div>
   <!-- Scripts -->
   <script src="{{ mix('/js/app.js') }}" defer></script>
@@ -37,7 +37,8 @@
   body {
     overflow: auto;
   }
-  .hidden{
+
+  .hidden {
     display: none;
   }
 </style>

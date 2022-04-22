@@ -13,9 +13,8 @@ class OfferController extends Controller
 {
 
     public function createOffer(Request $request){
-        $user_id = Auth::id();
         $param = [
-            'user_id' => $user_id,
+            'user_id' => $request->user_id,
             'cast_id' => $request->cast_id,
             'date'    => $request->date,
             'start_at'=> $request->start_at,

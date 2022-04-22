@@ -6,6 +6,7 @@
       </h1>
       <nav class="navbar navbar-white">
         <div>
+          <p class="">{{user_id}}</p>
           <router-link v-bind:to="{name: 'user.search'}">
           <button class="btn btn-success">誘う</button>
           </router-link>
@@ -21,7 +22,6 @@
           <router-link v-bind:to="{name: 'user.mypage'}">
           <button class="btn btn-success">マイページ</button>
           </router-link>
-          <p class="hidden">{{user_id}}</p>
         </div>
       </nav>
     </div>
@@ -30,22 +30,12 @@
 
 <script>
 export default {
-  data: function(){
-    return{
-      user_id:'',
-      style:Number
-    }
-  },  
-
-  methods:{
-    getUserId(){
-      axios.get('/api/user/:userId')
-        .then((res) => {
-          this.user_id = res.data;
-        });
-    }
-   },
-  }
+ data:function(){
+   return {
+     user_id:this.user_id
+   }
+ }
+}
 </script>
 
 <style scoped>

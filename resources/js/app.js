@@ -40,20 +40,8 @@ const router = new VueRouter({
         {
             path: '/user',
             name: 'home',
-            component:HomeComponent
-        },
-
-        {
-            path: '/login',
-            name: 'user.login',
-            component: LoginComponent,
+            component: HomeComponent,
             props:true
-        },
-
-        {
-            path: '/linelogincallback',
-            name: 'user.callback',
-            component:LinelogincallbackComponent
         },
 
         {
