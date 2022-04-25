@@ -22,5 +22,7 @@
 <body>
     <div>
         <a class="btn btn-border-shadow btn-border-shadow--radius" href="{{ route('linelogin') }}">男性ログイン</a>
+
+        <a class="btn btn-border-shadow btn-border-shadow--radius" href="{{ route('cast.linelogin') }}">女性ログイン</a>
     </div>
 </body>

@@ -36,4 +36,10 @@ return [
         'redirect'      => env('LINE_CLIENT_CALLBACK'),
     ],
 
+    'line_cast' => [
+        'client_id'     => env('LINE_CLIENT_ID_cast'),
+        'client_secret' => env('LINE_CLIENT_SECRET_cast'),
+        'redirect'      => env('LINE_CLIENT_CALLBACK_cast'),
+    ],
+
 ];

@@ -21,4 +21,12 @@ class CastController extends Controller
         $cast = Cast::find($id)->last();
         return $cast;
     }
+
+    public function index(){
+        $cast_id = Auth::id();
+
+        return view('cast')->with([
+            'cast_id' => $cast_id
+        ]);
+    }
 }

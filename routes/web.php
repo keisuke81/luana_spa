@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CastController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,3 +41,19 @@ Route::get(
 Route::get('/linelogincallback', [LoginController::class, 'handleProviderCallback'])->name('callback');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+///////////////////////////////////////////////////////
+/////////キャスト用/////////////////////
+Route::get('/cast',
+    [CastController::class, 'index']
+)->name('cast.app');
+
+//LINEログイン機能 男
+Route::get('/login/line/cast',
+    [LoginController::class, 'cast_redirectToProvider']
+)->name('cast.linelogin');
+
+Route::get('/linelogincallback/cast', 
+[LoginController::class, 'cast_handleProviderCallback'])->name('cast.callback');
+
