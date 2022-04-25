@@ -31,3 +31,15 @@ Route::get('/user/search/{id}',[
 Route::post('/user/offer/create/',[
     OfferController::class,'createOffer'
 ])->name('createOffer');
+
+Route::get('/user/myprofile/{id}', [
+    UserController::class, 'getMyProfile'
+])->name('getMyProfile');
+
+Route::get('/user/myprofile/{id}/edit', [
+    UserController::class, 'getMyProfileEdit'
+])->name('getMyProfileEdit');
+
+Route::post('/user/myprofile/{id}/update',[
+    UserController::class, 'UpdateMyProfile'
+])->name('UpdateMyProfile');

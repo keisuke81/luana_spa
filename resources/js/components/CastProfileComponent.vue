@@ -1,5 +1,4 @@
 <template>
-  <div id="app_2">　
     <ons-card> 
       <img :src="cast.img_url" alt="" class="card-img-top">
           <div class="card-body">
@@ -15,8 +14,6 @@
             <ons-button modifier="large">ラウンドに誘う</ons-button>
           </router-link>
     </ons-card>
-    <router-view></router-view>
-  </div>
 </template>
 
 <style scoped>

@@ -13,15 +13,16 @@ import HeaderComponent from "./components/HeaderComponent";
 import SearchComponent from "./components/SearchComponent";
 import CastProfileComponent from "./components/CastProfileComponent.vue";
 import OfferCastComponent from "./components/OfferCastComponent.vue";
-import OfferConfirmComponent from "./components/OfferConfirmComponent.vue";
-import UserReserveComponent from "./components/UserReserveComponent.vue";
 import UserLikedComponent from "./components/UserLikedComponent";
 import UserChatListComponent from "./components/UserChatListComponent";
 import UserMypageComponent from "./components/UserMypageComponent";
 import OfferCreateComponent from "./components/OfferCreateComponent.vue";
-import LoginComponent from "./components/LoginComponent.vue";
-import LinelogincallbackComponent from "./components/LinelogincallbackComponent.vue";
 import HomeComponent from "./components/HomeComponent.vue";
+import UserReserveComponent from "./components/UserReserveComponent.vue";
+import UserCreditcardComponent from "./components/UserCreditcardComponent";
+import UserHistoryComponent from './components/UserHistoryComponent.vue';
+import UserMyprofileComponent from "./components/UserMyprofileComponent";
+import UserMyprofileEditComponent from "./components/UserMyprofileEditComponent"
 
 
 
@@ -73,13 +74,6 @@ const router = new VueRouter({
         },
 
         {
-            path: '/user/reserve/:reserveId',
-            name: 'user.reserve',
-            component: UserReserveComponent,
-            props:true
-        },
-
-        {
             path: '/user/liked',
             name: 'user.liked',
             component: UserLikedComponent,
@@ -97,6 +91,41 @@ const router = new VueRouter({
             path: '/user/mypage',
             name: 'user.mypage',
             component: UserMypageComponent,
+            props:true
+        },
+
+        {
+            path: '/user/reserve/:userId',
+            name: 'user.reserve',
+            component: UserReserveComponent,
+            props:true
+        },
+
+        {
+            path: '/user/creditcard/:userId',
+            name: 'user.creditcard',
+            component: UserCreditcardComponent,
+            props:true
+        },
+
+        {
+            path: '/user/history/:userId',
+            name: 'user.history',
+            component: UserHistoryComponent,
+            props:true
+        },
+
+        {
+            path: '/user/myprofile/:userId',
+            name: 'user.myprofile',
+            component: UserMyprofileComponent,
+            props:true
+        },
+
+        {
+            path: '/user/myprofile/:userId/edit',
+            name: 'user.myprofile.edit',
+            component: UserMyprofileEditComponent,
             props:true
         },
     ]
