@@ -3,6 +3,7 @@
 use App\Http\Controllers\CastController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReserveController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,3 +44,32 @@ Route::get('/user/myprofile/{id}/edit', [
 Route::post('/user/myprofile/{id}/update',[
     UserController::class, 'UpdateMyProfile'
 ])->name('UpdateMyProfile');
+
+///////////////////////////////////
+//キャスト
+
+Route::get('/cast/myprofile/{id}', [
+    CastController::class, 'getMyProfile'
+])->name('getMyProfile');
+
+Route::get('/cast/myprofile/{id}/edit', [
+    CastController::class, 'getMyProfileEdit'
+])->name('getMyProfileEdit');
+
+Route::post('/cast/myprofile/{id}/update', [
+    CastController::class, 'UpdateMyProfile'
+])->name('UpdateMyProfile');
+
+Route::get('/cast/offered/{id}',[
+    OfferController::class, 'getCastOffered'
+])->name('getCastOffered');
+
+Route::post('/cast/offered/accept/{id}',[
+    ReserveController::class, 'AcceptOffer'
+])->name('AcceptOffer');
+
+Route::post('/cast/offered/reject/{id}', [
+    OfferController::class, 'RejectOffer'
+])->name('RejectOffer');
+
+

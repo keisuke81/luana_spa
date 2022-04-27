@@ -7,6 +7,9 @@
       <nav class="navbar navbar-white">
         <div>
           <p class="">{{cast_id}}</p>
+          <router-link v-bind:to="{name: 'cast.offered', params: {castId: cast_id}}">
+            <button class="btn btn-success">誘われている</button>
+          </router-link>
           <router-link v-bind:to="{name: 'cast.appeal'}">
           <button class="btn btn-success">アピールする</button>
           </router-link>
@@ -30,11 +33,7 @@
 
 <script>
 export default {
- data:function(){
-   return {
-     cast_id:this.cast_id
-   }
- }
+  props:['cast_id']
 }
 </script>
 

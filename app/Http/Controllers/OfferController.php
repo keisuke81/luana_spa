@@ -24,4 +24,19 @@ class OfferController extends Controller
         
         Offer::create($param);
     }
+
+    public function getCastOffered(Cast $id){
+        $items = Offer::where('cast_id', $id->id)->where('reserved', null)->get();
+        foreach($items as $item) {
+            $user = User::where('id', $item->user_id)->first();
+            $item->user_name = $user->nickname;
+            $item->img_url = $user->img_url;
+        }
+
+        return $items;
+    }
+
+    public function RejectOffer($id){
+        Offer::where('id',$id)->delete();
+    }
 }

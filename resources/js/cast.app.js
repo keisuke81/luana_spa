@@ -8,10 +8,13 @@ import VueOnsen from 'vue-onsenui'; // This imports 'onsenui', so no need to imp
 
 Vue.use(VueOnsen); // VueOnsen set here as plugin to VUE. Done automatically if a call to window.Vue exists in the startup code.
 
-import CastHeaderComponent from "./components/CastHeaderComponent";
-import CastAppComponent from "./components/CastAppComponent.vue"
-
-
+import CastHeaderComponent from "./components/CastHeaderComponent.vue";
+import CastAppComponent from "./components/CastAppComponent.vue";
+import CastMypageComponent from "./components/CastMypageComponent.vue";
+import CastMyprofileComponent from "./components/CastMyprofileComponent.vue";
+import CastMyprofileEditComponent from "./components/CastMyprofileEditComponent";
+import CastOfferedComponent from "./components/CastOfferedComponent.vue";
+import CastReserveComponent from "./components/CastReserveComponent.vue";
 
 
 
@@ -31,8 +34,43 @@ const router = new VueRouter({
         name: 'cast.app',
         component: CastAppComponent,
         ptops:true
-    },
-    ]
+      },
+      
+      {
+        path: '/cast/mypage',
+        name: 'cast.mypage',
+        component: CastMypageComponent,
+        props:true
+      },
+
+      {
+        path: '/cast/myprofile/:castId',
+        name: 'cast.myprofile',
+        component: CastMyprofileComponent,
+        props: true
+      },
+
+      {
+        path: '/cast/myprofile/:castId/edit',
+        name: 'cast.myprofile.edit',
+        component: CastMyprofileEditComponent,
+        props:true
+      },
+
+      {
+        path: '/cast/offered/:castId',
+        name: 'cast.offered',
+        component: CastOfferedComponent,
+        props:true
+      },
+
+      {
+        path: '/cast/reserve',
+        name: 'cast.reserve',
+        component: CastReserveComponent,
+        props:true
+      }
+  ]
 });
 
 
