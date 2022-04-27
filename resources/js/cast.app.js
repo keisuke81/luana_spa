@@ -16,6 +16,7 @@ import CastMyprofileEditComponent from "./components/CastMyprofileEditComponent"
 import CastOfferedComponent from "./components/CastOfferedComponent.vue";
 import CastReserveComponent from "./components/CastReserveComponent.vue";
 import CastOfferedDetailComponent from "./components/CastOfferedDetailComponent.vue";
+import CastReserveContentComponent from "./components/CastReserveContentComponent.vue"
 
 
 
@@ -78,6 +79,13 @@ const router = new VueRouter({
         component: CastOfferedDetailComponent,
         props:true
       },
+
+      {
+        path: '/cast/reserve/content/:offerId',
+        name: 'cast.reserve.content',
+        component: CastReserveContentComponent,
+        props:true
+      }
   ]
 });
 

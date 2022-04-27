@@ -2,7 +2,7 @@
   <div>
     <p>{{user_id}}</p>
     <div>
-    <router-link v-bind:to="{name: 'user.reserve'}">
+    <router-link v-bind:to="{name: 'user.reserve',params:{userId:user_id}}">
       <button class="btn btn-success">ラウンド予定</button>
     </router-link>
     </div>

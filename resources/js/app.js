@@ -23,6 +23,7 @@ import UserCreditcardComponent from "./components/UserCreditcardComponent";
 import UserHistoryComponent from './components/UserHistoryComponent.vue';
 import UserMyprofileComponent from "./components/UserMyprofileComponent";
 import UserMyprofileEditComponent from "./components/UserMyprofileEditComponent"
+import UserReserveContentComponent from "./components/UserReserveContentComponent.vue";
 
 
 
@@ -98,6 +99,13 @@ const router = new VueRouter({
             path: '/user/reserve/:userId',
             name: 'user.reserve',
             component: UserReserveComponent,
+            props:true
+        },
+
+        {
+            path: '/user/reserve/content/:offerId',
+            name: 'user.reserve.content',
+            component: UserReserveContentComponent,
             props:true
         },
 

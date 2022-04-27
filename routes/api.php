@@ -45,6 +45,17 @@ Route::post('/user/myprofile/{id}/update',[
     UserController::class, 'UpdateMyProfile'
 ])->name('UpdateMyProfile');
 
+Route::get('/user/reserve/{id}', [
+    ReserveController::class, 'getUserReserve'
+])->name('getUserReserve');
+
+Route::get('/user/reserve/content/{id}',[
+    ReserveController::class, 'getUserReserveContent'
+]);
+
+Route::post('/user/reserve/delete/{id}', [
+    ReserveController::class, 'UserDeleteReserve'
+])->name('UserDeleteReserve');
 ///////////////////////////////////
 //キャスト
 
@@ -82,5 +93,9 @@ Route::get('/cast/offered/detail/{id}',[
 
 Route::post('/cast/reserve/delete/{id}',[
     ReserveController::class, 'CastDeleteReserve'
-])->name('CastDeletereserve');
+])->name('CastDeleteReserve');
+
+Route::get('/cast/reserve/content/{id}',[
+    ReserveController::class, 'getReserveContent'
+])->name('getReserveContent');
 
