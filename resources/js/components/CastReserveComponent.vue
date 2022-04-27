@@ -7,7 +7,9 @@
     <div class="">{{item.date}}</div>
     <div class="">{{item.start_at}}</div>
     <div class="">{{item.golf_course}}</div>
-    <button v-on:click="onDetail(item.id)" class="btn">詳細を確認する</button>
+    <router-link :to="{name:'cast.offered.detail',params:{offerId:item.offer_id}}">
+      <button class="btn">詳細を確認する</button>
+    </router-link>
     <button v-on:click="onDelete(item.id)" class="btn">予約を取り消す（※キャンセルポリシーをご確認ください）</button>
   </ons-card>
   </div>
@@ -30,14 +32,10 @@
           });
       },
 
-      onDeteil:function(reserveId){
-        axios.get('/api/cast/offered/'+offerId)
-      },
-
-      DeleteOffer:function(reserveId){
+      onDelete:function(reserveId){
         axios.post('/api/cast/reserve/delete/'+reserveId, reserveId)
         .then((res) =>{
-          this.$router.push({name: 'cast.reserve'});
+          this.getCastReserve();
         });
       },
   },

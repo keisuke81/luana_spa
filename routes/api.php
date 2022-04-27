@@ -80,3 +80,7 @@ Route::get('/cast/offered/detail/{id}',[
     OfferController::class, 'getOfferedDetail'
 ])->name('getOfferedDetail');
 
+Route::post('/cast/reserve/delete/{id}',[
+    ReserveController::class, 'CastDeleteReserve'
+])->name('CastDeletereserve');
+

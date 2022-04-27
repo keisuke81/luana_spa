@@ -43,4 +43,12 @@ class ReserveController extends Controller
 
         return $reserves;
     }
+
+    public function CastDeleteReserve($id){
+        $reserve = Reserve::where('id', $id)->first();
+
+        Offer::where('id', $reserve->offer_id)->delete();
+        Reserve::where('id', $id)->delete();
+
+    }
 }
