@@ -72,4 +72,11 @@ Route::post('/cast/offered/reject/{id}', [
     OfferController::class, 'RejectOffer'
 ])->name('RejectOffer');
 
+Route::get('/cast/reserve/{id}',[
+    ReserveController::class, 'getCastReserve'
+])->name('getCastReserve');
+
+Route::get('/cast/offered/detail/{id}',[
+    OfferController::class, 'getOfferedDetail'
+])->name('getOfferedDetail');
 

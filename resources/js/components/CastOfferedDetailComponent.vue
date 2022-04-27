@@ -1,15 +1,13 @@
 <template>
   <div>
-  <ons-card class="card" v-for="(item, index) in items" :key="index">
+  <ons-card class="card">
     <div ref="offerId">{{item.id}}</div>
     <div class="">{{item.img_url}}</div>
     <div class="">{{item.user_name}}</div>
     <div class="">{{item.date}}</div>
     <div class="">{{item.start_at}}</div>
     <div class="">{{item.golf_course}}</div>
-    <router-link :to="{name:'cast.offered.detail',params:{offerId:item.id}}">
-      <button class="btn">詳細を確認する</button>
-    </router-link>
+    <button v-on:click="Accept(item.id)" class="btn">お誘いを受ける</button>
     <button v-on:click="Reject(item.id)" class="btn">ごめんなさい</button>
   </ons-card>
   </div>
@@ -17,30 +15,37 @@
 
 <script>
  export default {
-  props:['cast_id','castId'],
+  props:['cast_id','castId','offerId'],
 
   data:function(){
     return{
-      items:[],
+      item:[],
     }
   },
   methods:{
-      getCastOffered(){
-        axios.get('/api/cast/offered/'+this.castId)
+      getOfferedDetail(){
+        axios.get('/api/cast/offered/detail/'+this.offerId)
           .then((res) => {
-            this.items = res.data;
+            this.item = res.data;
           });
+      },
+
+      Accept:function(offerId){
+        axios.post('/api/cast/offered/accept/'+offerId, offerId)
+        .then((res) =>{
+          this.$router.push({name: 'cast.reserve',params:{castId:this.cast_id}});
+        });
       },
 
       Reject:function(offerId){
         axios.post('/api/cast/offered/reject/'+offerId, offerId)
         .then((res) =>{
-          this.getCastOffered();
+          this.$router.push({name: 'cast.offered', params:{castId:this.cast_id}})
         });
       }
   },
   mounted(){
-    this.getCastOffered();
+    this.getOfferedDetail();
   }
- }  
+}
 </script>

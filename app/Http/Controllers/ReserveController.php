@@ -27,4 +27,20 @@ class ReserveController extends Controller
         $item->reserved =1;
         $item->save();
     }
+
+    public function getCastReserve($id){
+        $reserves = Reserve::where('cast_id', $id)->get();
+
+        foreach($reserves as $reserve){
+            $item = Offer::where('id', $reserve->offer_id)->first();
+            $user = User::where('id', $reserve->user_id)->first();
+            $reserve->user_name = $user->nickname;
+            $reserve->img_url = $user->img_url;
+            $reserve->date = $item->date;
+            $reserve->start_at = $item->start_at;
+            $reserve->golf_course = $item->golf_course;
+        };
+
+        return $reserves;
+    }
 }

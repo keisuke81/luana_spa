@@ -36,6 +36,15 @@ class OfferController extends Controller
         return $items;
     }
 
+    public function getOfferedDetail($id){
+        $item = Offer::where('id', $id)->first();
+        $user = User::where('id',$item->user_id)->first();
+        $item->user_name = $user->nickname;
+        $item->img_url = $user->img_url;
+
+        return $item;
+    }
+
     public function RejectOffer($id){
         Offer::where('id',$id)->delete();
     }
