@@ -1,5 +1,5 @@
 <template>
-  <ons-card> 
+  <ons-card>
       <img :src="user.img_url" alt="" class="card-img-top">
           <div class="card-body">
             <p class="">お名前：{{user.name}}</p>
@@ -26,7 +26,7 @@ export default {
 
   data: function(){
     return{
-      user:[]
+      user:[],
     }
   },
 
@@ -37,8 +37,6 @@ export default {
           this.user = res.data;
         });
     },
-
-    
   },
 
   mounted(){
@@ -46,3 +44,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+img{
+  height:auto;
+  width:60%;
+}
+</style>

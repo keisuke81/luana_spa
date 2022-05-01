@@ -2,6 +2,13 @@
   <ons-card>
           <div class="card-body">
             <div>
+              <label for="img_url">
+                <input type="file" name="file"  v-on:change="onChange">
+                <img :src="img_url">
+              </label>
+              <button v-on:click="onUpload">アップロードする</button>
+            </div>
+            <div>
               <label for="name">お名前</label>
               <input type="text" v-model="name">
             </div>
@@ -68,7 +75,8 @@ export default {
 
   data: function(){
     return{
-      user:[],
+      selected_file:null,
+      img_url: '',
       name:'',
       nickname:'',
       birthday:'',
@@ -78,15 +86,40 @@ export default {
       length_of_golf:'',
       living_area:'',
       transportation:'',
-      message:''
+      message:'',
     }
   },
 
   methods:{
+    onChange:function(event){
+        this.selected_file = event.target.files[0]
+        console.log(this.selected_file)
+      },
+
+    onUpload:function(){
+      console.log(this.selected_file)
+      console.log(this.user_id)
+
+      let formData = new FormData();
+      formData.append('file', this.selected_file);
+
+      let config = {
+                    headers: {
+                        'content-type': 'multipart/form-data'
+                    }
+                };
+
+      axios.post('/api/user/myprofile/fileupload/'+this.user_id,
+        formData,
+        config,
+      )
+      .then(this.getMyProfile)
+    },   
+
     getMyProfile(){
       axios.get('/api/user/myprofile/'+this.userId+'/edit')
         .then((res) => {
-          this.user = res.data.id;
+          this.img_url = res.data.img_url;
           this.name = res.data.name;
           this.nickname = res.data.nickname;
           this.birthday = res.data.birthday;
@@ -122,8 +155,15 @@ export default {
       }
   },
 
-  mounted(){
+   mounted(){
     this.getMyProfile();
-  }
+  },
 }
 </script>
+
+<style scoped>
+img{
+  height:auto;
+  width:60%;
+}
+</style>

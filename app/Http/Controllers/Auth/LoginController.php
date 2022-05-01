@@ -66,6 +66,7 @@ class LoginController extends Controller
             // redirect confirm
             $user = User::create([
                     'name'               => $provided_user->name,
+                    'img_url' => $provided_user->avatar,
                     'provider'           => 'line',
                     'line_id'   => $provided_user->id,
                 ]);

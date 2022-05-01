@@ -26,6 +26,8 @@ class UserController extends Controller
 
     public function getMyProfileEdit(User $id)
     {
+        $user_id = $id->id;
+        $img_url = $id->img_url;
         $name = $id->name;
         $nickname = $id->nickname;
         $birthday = $id->birthday;
@@ -38,7 +40,8 @@ class UserController extends Controller
         $message = $id->message;
         
         return [
-         'id'=> $id,
+         'img_url' => $img_url,
+         'user_id'=> $user_id,
          'name'=>$name,
          'nickname'=> $nickname,
          'birthday' =>$birthday,
@@ -68,5 +71,14 @@ class UserController extends Controller
         ];
 
         User::where('id', $user_id)->update($param);
+    }
+
+    public function fileUpload(Request $request, $id){
+        $file_name = $request->file->getClientOriginalName();
+        $request->file->storeAs('public/',$file_name);
+        
+        $user = User::where('id',$id)->first();
+        $user->update(['img_url' => 'http://localhost:8000/storage/'.$file_name]);
+
     }
 }

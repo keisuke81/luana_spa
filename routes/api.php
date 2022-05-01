@@ -56,6 +56,10 @@ Route::get('/user/reserve/content/{id}',[
 Route::post('/user/reserve/delete/{id}', [
     ReserveController::class, 'UserDeleteReserve'
 ])->name('UserDeleteReserve');
+
+Route::post('/user/myprofile/fileupload/{id}',[
+    UserController::class, 'fileUpload'
+]);
 ///////////////////////////////////
 //キャスト
 
