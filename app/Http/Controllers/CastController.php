@@ -39,6 +39,7 @@ class CastController extends Controller
     {
         $name = $id->name;
         $nickname = $id->nickname;
+        $img_url = $id->img_url;
         $birthday = $id->birthday;
         $occupation = $id->occupation;
         $possible_date_round = $id->possible_date_round;
@@ -51,6 +52,7 @@ class CastController extends Controller
         return [
             'id' => $id,
             'name' => $name,
+            'img_url' => $img_url,
             'nickname' => $nickname,
             'birthday' => $birthday,
             'occupation' => $occupation,
@@ -80,5 +82,14 @@ class CastController extends Controller
         ];
 
         Cast::where('id', $cast_id)->update($param);
+    }
+
+    public function fileUpload(Request $request, $id)
+    {
+        $file_name = $request->file->getClientOriginalName();
+        $request->file->storeAs('public/', $file_name);
+
+        $user = Cast::where('id', $id)->first();
+        $user->update(['img_url' => 'http://localhost:8000/storage/' . $file_name]);
     }
 }

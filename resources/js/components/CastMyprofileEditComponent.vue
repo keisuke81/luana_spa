@@ -1,5 +1,12 @@
 <template>
     <ons-card>
+          <div>
+            <label for="img_url">
+              <input type="file" name="file"  v-on:change="onChange">
+              <img :src="img_url">
+            </label>
+            <button v-on:click="onUpload">アップロードする</button>
+          </div>
           <div class="card-body">
             <div>
               <label for="name">お名前</label>
@@ -68,6 +75,8 @@ export default {
   data: function(){
     return{
       cast:[],
+      selected_file:null,
+      img_url:'',
       name:'',
       nickname:'',
       birthday:'',
@@ -82,9 +91,35 @@ export default {
   },
 
   methods:{
+    onChange:function(event){
+        this.selected_file = event.target.files[0]
+        console.log(this.selected_file)
+      },
+
+    onUpload:function(){
+      console.log(this.selected_file)
+      console.log(this.cast_id)
+
+      let formData = new FormData();
+      formData.append('file', this.selected_file);
+
+      let config = {
+          headers: {
+              'content-type': 'multipart/form-data'
+                  }
+                };
+
+      axios.post('/api/cast/myprofile/fileupload/'+this.cast_id,
+        formData,
+        config,
+      )
+      .then(this.getMyProfile)
+    },
+
     getMyProfile(){
       axios.get('/api/cast/myprofile/'+this.cast_id+'/edit')
         .then((res) => {
+          this.img_url = res.data.img_url;
           this.cast = res.data.id;
           this.name = res.data.name;
           this.nickname = res.data.nickname;
@@ -126,3 +161,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+img{
+  height:auto;
+  width:60%;
+}
+</style>

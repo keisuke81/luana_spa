@@ -103,3 +103,7 @@ Route::get('/cast/reserve/content/{id}',[
     ReserveController::class, 'getReserveContent'
 ])->name('getReserveContent');
 
+Route::post('/cast/myprofile/fileupload/{id}', [
+    CastController::class, 'fileUpload'
+]);
+
