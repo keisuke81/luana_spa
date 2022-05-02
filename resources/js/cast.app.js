@@ -16,7 +16,10 @@ import CastMyprofileEditComponent from "./components/CastMyprofileEditComponent"
 import CastOfferedComponent from "./components/CastOfferedComponent.vue";
 import CastReserveComponent from "./components/CastReserveComponent.vue";
 import CastOfferedDetailComponent from "./components/CastOfferedDetailComponent.vue";
-import CastReserveContentComponent from "./components/CastReserveContentComponent.vue"
+import CastReserveContentComponent from "./components/CastReserveContentComponent.vue";
+import CastSearchComponent from "./components/CastSearchComponent.vue";
+import CastUserProfileComponent from "./components/CastUserProfileComponent.vue";
+
 
 
 
@@ -84,6 +87,20 @@ const router = new VueRouter({
         path: '/cast/reserve/content/:offerId',
         name: 'cast.reserve.content',
         component: CastReserveContentComponent,
+        props:true
+      },
+
+      {
+        path: '/cast/search',
+        name: 'cast.search',
+        component: CastSearchComponent,
+        props:true
+      },
+
+      {
+        path: '/cast/search/:userId/:castId',
+        name: 'cast.user.profile',
+        component: CastUserProfileComponent,
         props:true
       }
   ]

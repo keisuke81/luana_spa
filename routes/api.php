@@ -5,6 +5,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReserveController;
+use App\Http\Controllers\CastlikeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -116,3 +117,18 @@ Route::post('/cast/myprofile/fileupload/{id}', [
     CastController::class, 'fileUpload'
 ]);
 
+Route::get('/cast/search', [
+    UserController::class, 'getUsersList'
+]);
+
+Route::get('/cast/search/{id}/{cast_id}', [
+    UserController::class, 'getUserProfile'
+]);
+
+Route::post('/cast/like/{id}', [
+    CastlikeController::class, 'like'
+]);
+
+Route::post('/cast/unlike/{id}', [
+    CastlikeController::class, 'unlike'
+]);

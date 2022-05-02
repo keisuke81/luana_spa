@@ -10,7 +10,7 @@
           <router-link v-bind:to="{name: 'cast.offered', params: {castId: cast_id}}">
             <button class="btn btn-success">誘われている</button>
           </router-link>
-          <router-link v-bind:to="{name: 'cast.appeal'}">
+          <router-link v-bind:to="{name: 'cast.search'}">
           <button class="btn btn-success">アピールする</button>
           </router-link>
 

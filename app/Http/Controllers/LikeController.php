@@ -23,4 +23,5 @@ class LikeController extends Controller
 
         $like->delete();
     }
+
 }

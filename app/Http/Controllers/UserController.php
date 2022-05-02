@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Like;
 use App\Models\Follow;
+use App\Models\Castlike;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ClientRequest;
 use App\Models\CastFollow;
@@ -80,5 +82,27 @@ class UserController extends Controller
         $user = User::where('id',$id)->first();
         $user->update(['img_url' => 'http://localhost:8000/storage/'.$file_name]);
 
+    }
+
+    public function getUsersList()
+    {
+        $items = User::get();
+
+        return [
+            'items' => $items
+        ];
+    }
+
+    public function getUserProfile($id, $cast_id)
+    {
+        $user = User::where('id', $id)->first();
+        $like = Castlike::where('cast_id', $cast_id)->where('user_id', $id)->first();
+        if ($like == null) {
+            $currentFollowing = false;
+        } else {
+            $currentFollowing = true;
+        }
+
+        return [$user, $currentFollowing];
     }
 }
