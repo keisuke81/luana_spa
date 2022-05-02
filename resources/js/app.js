@@ -43,7 +43,7 @@ const router = new VueRouter({
             path: '/user',
             name: 'home',
             component: HomeComponent,
-            props:true
+            props: true,
         },
 
         {
@@ -54,12 +54,12 @@ const router = new VueRouter({
         },
 
         {
-            path: '/user/search/:castId',
+            path: '/user/search/:castId/:userId',
             name: 'user.cast.profile',
             component: CastProfileComponent,
             props: true,
         },
-  
+
         {
             path: '/user/offer/:castId',
             name: 'user.cast.offer',

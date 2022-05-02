@@ -13,6 +13,24 @@
           <router-link :to="{name: 'user.cast.offer'}">
             <ons-button modifier="large">ラウンドに誘う</ons-button>
           </router-link>
+          
+          <!--Likeボタン-->
+          <div>
+            <ons-button v-if="currentFollowing" type="button" modifier="large" class="btn btn-point btn-raised" @click="unlike">
+              <div v-if="sending" class="spinner-border spinner-border-sm" role="status">
+                <span class="sr-only">Sending...</span>
+              </div>
+              <div v-else>Liked</div>
+            </ons-button>
+            <ons-button v-else type="button" modifier="large" class="btn btn-default btn-raised" @click="like">
+              <div v-if="sending" class="spinner-border spinner-border-sm" role="status">
+                <span class="sr-only">Sending...</span>
+              </div>
+              <div v-else>
+                Likeする
+              </div>
+            </ons-button>
+          </div>
     </ons-card>
 </template>
 
@@ -28,6 +46,16 @@
    font-size:1.3em;
    font-weight: 600;
  }
+
+ .btn-point{
+   background:pink;
+   color:white;
+   font-weight:1.5em;
+ }
+ .btn-default{
+   background:white;
+   color:black;
+ }
 </style>
 
 <script>
@@ -35,23 +63,57 @@ export default {
   props:{
     castId:{
       type: undefined
+    },
+    user_id:{
+      type: undefined
+    },
+    following:{
+      type:Boolean,
     }
   },
 
   data: function(){
     return{
-      cast:[]
+      cast:[],
+      currentFollowing : this.following,
+      sending : false,
     }
   },
 
   methods:{
     getCast(){
-      axios.get('/api/user/search/'+this.castId)
+      axios.get('/api/user/search/'+this.castId+'/'+this.user_id)
         .then((res) => {
-          this.cast = res.data;
+          this.cast = res.data[0];
+          this.currentFollowing = res.data[1];
         });
+    },
+
+    like(){
+      if(this.sending){
+        return 
+      }
+      var params = {
+        user_id : this.user_id
+      }
+      this.sending =true
+      axios.post('/api/user/like/'+this.castId, params)
+      this.currentFollowing = true
+      this.sending =false
+    },
+
+    unlike(){
+      if(this.sending){
+        return
+      }
+      this.sending = true
+      var params={
+        user_id : this.user_id
+      }
+      axios.post('/api/user/unlike/'+this.castId, params)
+      this.currentFollowing = false
+      this.sending =false
     }
-    
   },
 
   mounted(){

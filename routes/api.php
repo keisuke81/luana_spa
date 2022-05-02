@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CastController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReserveController;
@@ -25,7 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/user/search',[
     CastController::class,'getCastsList'
 ]);
-Route::get('/user/search/{id}',[
+Route::get('/user/search/{id}/{user_id}',[
     CastController::class,'getCastProfile'
 ]);
 
@@ -59,6 +60,14 @@ Route::post('/user/reserve/delete/{id}', [
 
 Route::post('/user/myprofile/fileupload/{id}',[
     UserController::class, 'fileUpload'
+]);
+
+Route::post('/user/like/{id}',[
+    LikeController::class, 'like'
+]);
+
+Route::post('/user/unlike/{id}',[
+    LikeController::class, 'unlike'
 ]);
 ///////////////////////////////////
 //キャスト

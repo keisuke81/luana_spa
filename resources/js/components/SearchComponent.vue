@@ -7,11 +7,8 @@
           <p class="name-text">{{item.nickname}}</p>
           <p class="others-text">ベストスコア：{{item.best_score}}</p>
           <p class="others-text">ゴルフ歴{{item.length_of_golf}}年</p>
-
-          <router-link v-bind:to="{name:'user.cast.profile', params: {castId: item.id}}">
-            <ons-button modifier="large">プロフィール</ons-button>
-          </router-link>
-        </div>  
+          <ons-button modifier="large" @click="castProfile(item.id)">プロフィール</ons-button>
+        </div>
     </ons-card>
   </div>
 </template>
@@ -37,10 +34,11 @@
 
 <script>
 export default {
+  props:['user_id'],
+
   data:function(){
     return{
       items:[],
-      user_id:''
     }
   },
   methods:{
@@ -48,8 +46,12 @@ export default {
       axios.get('/api/user/search')
         .then((res) => {
           this.items = res.data.items;
-          this.user_id = res.data.user_id;
         });
+    },
+
+    castProfile:function(castId){
+      var user_id=this.user_id
+      this.$router.push('/user/search/'+castId+'/'+user_id)
     }
   },
   mounted(){

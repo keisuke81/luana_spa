@@ -3,23 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
 use App\Models\Cast;
+use App\Models\Like;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class CastController extends Controller
 {
     public function getCastsList(){
         $items = Cast::get();
+        $user_id = Auth::id();
 
         return [
             'items' => $items
         ];
     }
 
-    public function getCastProfile(Cast $id)
+    public function getCastProfile($id,$user_id)
     {
-        $cast = Cast::find($id)->last();
-        return $cast;
+        $cast = Cast::where('id',$id)->first();
+        $like = Like::where('user_id', $user_id)->where('cast_id', $id)->first();
+        if($like == null){
+            $currentFollowing = false;
+        }else{
+            $currentFollowing =true;
+        }
+        
+        return [$cast, $currentFollowing];
     }
 
     public function index(){
