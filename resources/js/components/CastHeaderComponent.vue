@@ -18,7 +18,7 @@
           <button class="btn btn-success">Like</button>
           </router-link>
 
-          <router-link v-bind:to="{name: 'cast.chat.list'}">
+          <router-link v-bind:to="{name: 'cast.chat.list', params:{castId: cast_id}}">
           <button class="btn btn-success">チャット</button>
           </router-link>
 

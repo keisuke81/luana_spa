@@ -15,6 +15,7 @@ import CastProfileComponent from "./components/CastProfileComponent.vue";
 import OfferCastComponent from "./components/OfferCastComponent.vue";
 import UserLikedComponent from "./components/UserLikedComponent";
 import UserChatListComponent from "./components/UserChatListComponent";
+import UserChatRoomComponent from "./components/UserChatRoomComponent.vue";
 import UserMypageComponent from "./components/UserMypageComponent";
 import OfferCreateComponent from "./components/OfferCreateComponent.vue";
 import HomeComponent from "./components/HomeComponent.vue";
@@ -75,16 +76,23 @@ const router = new VueRouter({
         },
 
         {
-            path: '/user/liked',
+            path: '/user/liked/:user_id',
             name: 'user.liked',
             component: UserLikedComponent,
             props:true
         },
 
         {
-            path: '/user/chat/list',
+            path: '/user/chat/list/:userId',
             name: 'user.chat.list',
             component: UserChatListComponent,
+            props:true
+        },
+
+        {
+            path: '/user/chat/room/:userId/:castId',
+            name: 'user.chat.room',
+            component: UserChatRoomComponent,
             props:true
         },
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\CastlikeController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -70,6 +71,22 @@ Route::post('/user/like/{id}',[
 Route::post('/user/unlike/{id}',[
     LikeController::class, 'unlike'
 ]);
+
+Route::get('/user/chat/list/{id}',[
+    LikeController::class, 'getLikeEach'
+]);
+
+Route::get('/user/chat/room/{id}/{cast_id}',[
+    ChatController::class,'getChatRoom'
+]);
+
+Route::post('/user/chat/send',[
+    ChatController::class, 'chatSend'
+]);
+
+Route::get('/user/liked/{id}',[
+    CastlikeController::class, 'getUserLiked'
+]);
 ///////////////////////////////////
 //キャスト
 
@@ -131,4 +148,16 @@ Route::post('/cast/like/{id}', [
 
 Route::post('/cast/unlike/{id}', [
     CastlikeController::class, 'unlike'
+]);
+
+Route::get('/cast/chat/list/{id}', [
+    CastlikeController::class, 'getLikeEach'
+]);
+
+Route::get('/cast/chat/room/{id}/{user_id}', [
+    ChatController::class, 'getCastChatRoom'
+]);
+
+Route::post('/cast/chat/send', [
+    ChatController::class, 'CastchatSend'
 ]);

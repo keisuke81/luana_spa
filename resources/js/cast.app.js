@@ -19,7 +19,8 @@ import CastOfferedDetailComponent from "./components/CastOfferedDetailComponent.
 import CastReserveContentComponent from "./components/CastReserveContentComponent.vue";
 import CastSearchComponent from "./components/CastSearchComponent.vue";
 import CastUserProfileComponent from "./components/CastUserProfileComponent.vue";
-
+import CastChatListComponent from "./components/CastChatListComponent.vue";
+import CastChatRoomComponent from "./components/CastChatRoomComponent.vue";
 
 
 
@@ -101,6 +102,20 @@ const router = new VueRouter({
         path: '/cast/search/:userId/:castId',
         name: 'cast.user.profile',
         component: CastUserProfileComponent,
+        props:true
+      },
+
+      {
+        path: '/cast/chat/list/:castId',
+        name: 'cast.chat.list',
+        component: CastChatListComponent,
+        props:true
+      },
+
+      {
+        path: '/cast/chat/room/:castId/:userId',
+        name: 'cast.chat.room',
+        component: CastChatRoomComponent,
         props:true
       }
   ]

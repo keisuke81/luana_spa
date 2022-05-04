@@ -25,7 +25,7 @@
 
 <script>
   export default{
-    props:['user_id'],
+    props:['cast_id'],
 
     data:function(){
       return{
@@ -35,14 +35,14 @@
 
     methods:{
       getLikeEach(){
-        axios.get('/api/user/chat/list/'+this.user_id)
+        axios.get('/api/cast/chat/list/'+this.cast_id)
         .then((res)=>{
           this.items = res.data;
         });
       },
 
-      onChat(castId){
-        this.$router.push('/user/chat/room/'+this.user_id+'/'+castId)
+      onChat(userId){
+        this.$router.push('/cast/chat/room/'+this.cast_id+'/'+userId)
       }
     },
 

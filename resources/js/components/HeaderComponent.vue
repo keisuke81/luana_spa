@@ -6,18 +6,16 @@
       </h1>
       <nav class="navbar navbar-white">
         <div>
-          <p class="">{{user_id}}</p>
+          <p class="hidden">{{user_id}}</p>
           <router-link v-bind:to="{name: 'user.search'}">
           <button class="btn btn-success">誘う</button>
           </router-link>
 
-          <router-link v-bind:to="{name: 'user.liked'}">
+          <router-link v-bind:to="{name: 'user.liked',params:{user_id:this.user_id}}">
           <button class="btn btn-success">Like</button>
           </router-link>
 
-          <router-link v-bind:to="{name: 'user.chat.list'}">
-          <button class="btn btn-success">チャット</button>
-          </router-link>
+          <button class="btn btn-success" @click="getChatList">チャット</button>
 
           <router-link v-bind:to="{name: 'user.mypage'}">
           <button class="btn btn-success">マイページ</button>
@@ -30,11 +28,12 @@
 
 <script>
 export default {
- data:function(){
-   return {
-     user_id:this.user_id
-   }
- }
+ props:['user_id'],
+  methods:{
+    getChatList(){
+    this.$router.push('/user/chat/list/'+this.user_id)
+    }
+  }
 }
 </script>
 
