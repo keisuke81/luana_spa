@@ -1,16 +1,18 @@
 <template>
   <div>
   <ons-card class="card" v-for="(item, index) in items" :key="index">
-    <div ref="offerId">{{item.id}}</div>
-    <div class="">{{item.img_url}}</div>
+    <div ref="offerId" class="hidden">{{item.id}}</div>
+    <div class="">
+      <img :src="item.img_url" alt="">
+    </div>
     <div class="">{{item.user_name}}</div>
     <div class="">{{item.date}}</div>
     <div class="">{{item.start_at}}</div>
     <div class="">{{item.golf_course}}</div>
     <router-link :to="{name:'cast.offered.detail',params:{offerId:item.id}}">
-      <button class="btn">詳細を確認する</button>
+      <ons-button class="btn">詳細を確認する</ons-button>
     </router-link>
-    <button v-on:click="Reject(item.id)" class="btn">ごめんなさい</button>
+    <ons-button v-on:click="Reject(item.id)" class="btn">ごめんなさい</ons-button>
   </ons-card>
   </div>
 </template>
@@ -44,3 +46,13 @@
   }
  }  
 </script>
+
+<style scoped>
+img{
+  width:50%;
+  height:auto;
+}
+.hidden{
+  display:none;
+}
+</style>

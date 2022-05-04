@@ -46,4 +46,20 @@ class LikeController extends Controller
         return $each_follows;
     }
 
+    //キャストのLikeされているユーザー表示
+    public function getCastLiked($id)
+    {
+        $items = Like::where('cast_id', $id)->get();
+
+        foreach ($items as $item) {
+            $user = User::where('id', $item->user_id)->first();
+            $item->nickname = $user->nickname;
+            $item->best_score = $user->best_score;
+            $item->length_of_golf = $user->length_of_golf;
+            $item->id = $user->id;
+            $item->img_url = $user->img_url;
+        }
+        return $items;
+    }
+
 }

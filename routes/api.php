@@ -161,3 +161,7 @@ Route::get('/cast/chat/room/{id}/{user_id}', [
 Route::post('/cast/chat/send', [
     ChatController::class, 'CastchatSend'
 ]);
+
+Route::get('/cast/liked/{id}', [
+    LikeController::class, 'getCastLiked'
+]);

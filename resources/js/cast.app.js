@@ -21,6 +21,8 @@ import CastSearchComponent from "./components/CastSearchComponent.vue";
 import CastUserProfileComponent from "./components/CastUserProfileComponent.vue";
 import CastChatListComponent from "./components/CastChatListComponent.vue";
 import CastChatRoomComponent from "./components/CastChatRoomComponent.vue";
+import CastLikedComponent from "./components/CastLikedComponent.vue";
+
 
 
 
@@ -117,7 +119,14 @@ const router = new VueRouter({
         name: 'cast.chat.room',
         component: CastChatRoomComponent,
         props:true
-      }
+      },
+
+      {
+        path: '/cast/liked/:castId',
+        name: 'cast.liked',
+        component: CastLikedComponent,
+        props:true
+      },
   ]
 });
 

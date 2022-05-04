@@ -1,14 +1,16 @@
 <template>
   <div>
   <ons-card class="card">
-    <div ref="offerId">{{item.id}}</div>
-    <div class="">{{item.img_url}}</div>
+    <div ref="offerId" class="hidden">{{item.id}}</div>
+    <div class="">
+      <img :src="item.img_url" alt="">
+    </div>
     <div class="">{{item.user_name}}</div>
     <div class="">{{item.date}}</div>
     <div class="">{{item.start_at}}</div>
     <div class="">{{item.golf_course}}</div>
-    <button v-on:click="Accept(item.id)" class="btn">お誘いを受ける</button>
-    <button v-on:click="Reject(item.id)" class="btn">ごめんなさい</button>
+    <ons-button v-on:click="Accept(item.id)" class="btn">お誘いを受ける</ons-button>
+    <ons-button v-on:click="Reject(item.id)" class="btn">ごめんなさい</ons-button>
   </ons-card>
   </div>
 </template>
@@ -49,3 +51,13 @@
   }
 }
 </script>
+
+<style scoped>
+img{
+  width:50%;
+  height:auto;
+}
+.hidden{
+  display:none;
+}
+</style>

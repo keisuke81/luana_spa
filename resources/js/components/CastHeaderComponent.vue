@@ -14,7 +14,7 @@
           <button class="btn btn-success">アピールする</button>
           </router-link>
 
-          <router-link v-bind:to="{name: 'cast.liked'}">
+          <router-link v-bind:to="{name: 'cast.liked',params:{castId:cast_id}}">
           <button class="btn btn-success">Like</button>
           </router-link>
 
