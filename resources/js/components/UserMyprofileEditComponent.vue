@@ -22,7 +22,37 @@
             </div>
             <div>
               <label for="occupation">職業</label>
-              <input type="text" v-model="occupation" >
+              <select v-model="occupation" >
+                <option value="会社員">会社員</option>
+                <option value="経営者">経営者</option>
+                <option value="公務員">公務員</option>
+                <option value="医師">医師</option>
+                <option value="弁護士">弁護士</option>
+                <option value="会計士・税理士">会計士・税理士</option>
+                <option value="商社">商社</option>
+                <option value="広告代理店">広告代理店</option>
+                <option value="マスコミ・出版">マスコミ・出版</option>
+                <option value="銀行・証券">銀行・証券</option>
+                <option value="コンサルタント">コンサルタント</option>
+                <option value="メーカー・サービス">メーカー・サービス</option>
+                <option value="IT関連">IT関連</option>
+                <option value="エンジニア・クリエイター">エンジニア・クリエイター</option>
+                <option value="芸能関連">芸能関連</option>
+                <option value="美容師">美容師</option>
+                <option value="スポーツ関連">スポーツ関連</option>
+                <option value="アパレル関連">アパレル関連</option>
+                <option value="旅行関連">旅行関連</option>
+                <option value="航空関連">航空関連</option>
+                <option value="飲食関連">飲食関連</option>
+                <option value="教授・教師">教授・教師</option>
+                <option value="保育士">保育士</option>
+                <option value="受付">受付</option>
+                <option value="秘書">秘書</option>
+                <option value="看護師・介護士">看護師・介護士</option>
+                <option value="フリーランス">フリーランス</option>
+                <option value="学生">学生</option>
+                <option value="その他">その他</option>
+              </select>  
             </div>
             <div>
               <label for="possible_date_round">ラウンド可能な日</label>
