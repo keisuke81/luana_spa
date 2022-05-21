@@ -101,6 +101,6 @@ class CastController extends Controller
         $request->file->storeAs('public/', $file_name);
 
         $user = Cast::where('id', $id)->first();
-        $user->update(['img_url' => 'http://localhost:8000/storage/' . $file_name]);
+        $user->update(['img_url' => 'https://luanaapp.herokuapp.com/storage/' . $file_name]);
     }
 }

@@ -18,7 +18,7 @@ export default {
     login: function(){
       let response_type = 'code';
       let client_id = '1657063691'; //取得したチャネルID
-      let redirect_uri = 'http://localhost:8000/linelogincallback'; //設定したコールバック関数をURLエンコードしたもの
+      let redirect_uri = 'https://luanaapp.herokuapp.com/linelogincallback'; //設定したコールバック関数をURLエンコードしたもの
       let state = '12345abcde';//一旦ここはテキトー
       let scope = 'profile%20openid';
       let nonce = '09876xyz';//一旦ここはテキトー
