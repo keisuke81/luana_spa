@@ -32,7 +32,7 @@ Route::get('/user/search/{id}/{user_id}',[
     CastController::class,'getCastProfile'
 ]);
 
-Route::post('/user/offer/create/',[
+Route::post('/user/offer/create',[
     OfferController::class,'createOffer'
 ])->name('createOffer');
 

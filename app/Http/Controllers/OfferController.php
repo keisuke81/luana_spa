@@ -16,6 +16,7 @@ class OfferController extends Controller
         $param = [
             'user_id' => $request->user_id,
             'cast_id' => $request->cast_id,
+            'golf_course' => $request->golf_course,
             'date'    => $request->date,
             'start_at'=> $request->start_at,
             'num_of_users' => $request->num_of_users,

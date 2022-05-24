@@ -86,7 +86,7 @@ export default {
         'num_of_women': this.num_of_women
       };
 
-      axios.post('/api/user/offer/create/', params)
+      axios.post('/api/user/offer/create', params)
        .then((res) =>{
          this.$router.push({name: 'user.search'});
         });
